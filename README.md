@@ -1,6 +1,6 @@
 # Bash Notes
 
-###Parameters
+##Parameters
 A parameter is an entity that stores values
 
 There are three types of parameters:
@@ -27,7 +27,7 @@ read varname
 echo It\'s nice to meet you $varname
 ```
 
-### More with Read
+## More with Read
 we can alter the behaviour of `read` with a variety of command line options.Two commanly used options however are `-p` which allows you to specify a prompt and `-s` which makes the input silent.
 
 This can make it easy to ask for a username and password combination
@@ -41,7 +41,7 @@ echo
 echo login details accepted
 ```
 
-###More variables
+##More variables
 
 ```bash
 #! /bin/bash
