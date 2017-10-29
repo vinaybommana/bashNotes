@@ -1,9 +1,10 @@
 # Bash Notes
 
-##Parameters
+## Parameters
 A parameter is an entity that stores values
 
 There are three types of parameters:
+
 1. positional parameters
     - The arguments on the command line are available to a shell program as numbered parameters.
     - for example: $1 depicts the first command line argument
@@ -41,7 +42,7 @@ echo
 echo login details accepted
 ```
 
-##More variables
+## More variables
 
 ```bash
 #! /bin/bash
@@ -52,7 +53,7 @@ read game1 game2 game3
 
 echo games are: $game1 $game2 $game3
 ```
-* dirs -v
-* $@ --> depicts the entire string of the args
-* $1 --> depicts the first word of the args # args[0]
-* -z --> returns true if the string is empty
+* `dirs` -v
+* `$@` --> depicts the entire string of the args
+* `$1` --> depicts the first word of the args # args[0]
+* `-z` --> returns true if the string is empty
