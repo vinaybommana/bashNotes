@@ -120,6 +120,51 @@ dmesg | sort -f | less
 
 The `-f` option tells *sort* to disregard *case* while sorting
 
+# Redirection
+
+inputs and outputs of linux programs (not just shell programs) can be redirected.
+
+```bash
+ls -l > lsoutput.txt
+```
+
+* This saves the output of the `ls` command into a file called `lsoutput.txt`
+
+* However, there is much more to redirection. refer `filedescriptors`.
+* filedescriptor 0 is the standard input to a program.
+* filedescriptor 1 is the standard output to a program.
+* filedescriptor 2 is the standard error output to a program.
+
+* to redirect the standard error output, preface the `>` operator with the number of the file descriptor
+* because the standard error is on file descriptor 2, use the `2>` operator.
+* this is often used to discard error information and prevent it from appearing on the screen.
+
+Suppose you want to use the `kill` command to kill a process from a script.
+There is always a slight risk that the process will die before the `kill` command is executed.
+If this happens, `kill` will write an error message to the standard message to the standard error output.
+* which by default will appear on the screen.
+* by redirecting both the standard output and the error, you can prevent the `kill` command from writing any text to the screen.
+
+```bash
+$ kill -HUP 1234 > killout.txt 2> killerr.txt
+```
+
+will put the output and error information into seperate files.
+
+If we want to capture both sets of output into a single file, you can use the `>&` operator to combine the two outputs.
+
+```bash
+$ kill -1 1234 > killouterror.txt 2> &1
+```
+
+will put both the output and error outputs into the same file. Notice the order of the operators.
+
+* This reads as "redirect standard output file `killouterror.txt`, and then direct standard error to the same place as the standard output."
+
+```bash
+$ more $(grep -l POSIX *)
+$ grep -l POSIX * | more
+```
 # sed
 
 The primary use of Linux command sed (short for stream editor) is to modify each line of a file or stream by replacing specified parts of the line.
@@ -163,3 +208,10 @@ put it in the pattern-space execute the command in the '' and then delete the li
 # tail
 # diff
 # uniq
+
+---
+
+# readline
+
+* line editor
+* we commanly use a line editor when we use shell to edit commands
